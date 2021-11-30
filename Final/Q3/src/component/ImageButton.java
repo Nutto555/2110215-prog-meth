@@ -34,10 +34,13 @@ public class ImageButton extends ImageView {
     private void initEventHandler(ImageButtonType imageButtonType) {
         setCursor(Cursor.HAND);
         setOnMouseClicked((mouseEvent) -> {
-            if (imageButtonType.equals(ImageButtonType.ADD)) {
-                TodoLogic.addTodo(Main.getAdderBarCurrentText());
-            } else {
-                TodoLogic.removeTodo(this);
+            switch (imageButtonType) {
+                case ADD -> {
+                    TodoLogic.addTodo(Main.getAdderBarCurrentText());
+                }
+                case REMOVE -> {
+                    TodoLogic.removeTodo(this);
+                }
             }
         });
     }
